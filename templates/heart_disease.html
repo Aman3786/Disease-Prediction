@@ -1,0 +1,215 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    
+    <style>
+      .buttonhover:hover{
+        color: white !important;
+        background-color: #0dcaf0;
+
+      }
+    </style>
+
+  </head>
+<body class="my-5"> 
+      <div class="container">
+         <h2 class="text-info text-center fw-bold mt-3 mb-2"> PREDICT HEART DISEASE </h2>
+      </div>
+
+      <div class="container">
+        <div class="card shadow rounded hovercard">
+          <div class="card-body">
+
+            <h3 class="text-info text-center my-3">Symptons Of Heart Disease.</h3>
+              <form action="{% url 'predict_heart_disease' %}" method="POST">
+                {% csrf_token %}
+                <div class="row mb-2">
+                  <div class="col-lg-6 col-md-6 col-12 mb-2">
+                    <label for="example-date-input" >D.O.F</label>
+                    <input class="form-control" name="age" type="date" value="2011-08-19" id="example-date-input">
+                  </div>
+
+                  <div class="col-lg-6 col-md-6 col-12">
+                    <label for="exampleFormControlInput1">HEIGHT</label>
+                    <input type="HEIGHT" class="form-control" name="height" id="HEIGHT" placeholder="integer (cm)">
+                  </div>
+                </div>
+
+                <div class="row mb-2">
+                  <div class="col-lg-6 col-md-6 col-12 mb-2">
+                    <label for="exampleFormControlInput1">WEIGHT</label>
+                    <input type="WEIGHT" class="form-control" name="width" id="WEIGHT" placeholder="integer (kg)">
+                  </div>
+
+                  <div class="col-lg-6 col-md-6 col-12 ">
+                    <label for="exampleFormControlSelect1">GENDER</label>
+                    <select class="form-control GENDER" name="gender" id="exampleFormControlSelect1">
+                      <option value=1>FEMALE</option>
+                      <option value=2>MALE</option>
+                      
+                    </select>
+                  </div>
+                </div>
+
+                <div class="row mb-2">
+                  <div class="col-lg-6 col-md-6 col-12 mb-2">
+                    <label for="exampleFormControlInput1">AP_HIGH</label>
+                    <input type="AP_HIGH" class="form-control" name="ap_high" id="AP_HIGH" placeholder="integer ">
+                  </div>
+
+                  <div class="col-lg-6 col-md-6 col-12">
+                    <label for="exampleFormControlInput1">AP_LOW</label>
+                  <input type="AP_LOW" class="form-control" name="ap_low" id="AP_LOW" placeholder="integer ">
+                  </div>
+                </div>
+
+                <div class="row mb-2">
+                  <div class="col-lg-6 col-md-6 col-12 mb-2">
+                    <label for="exampleFormControlSelectCholestrol">CHOLESTEROL</label>
+                    <select class="form-control CHOLESTROL" name="cholestrol" id="exampleFormControlSelectCholestrol">
+                      <option value=0>Normal</option>
+                      <option value=1>Above Normal</option>
+                      <option value=2>Well Above Normal</option>
+                    </select>
+                  </div>
+
+                  <div class="col-lg-6 col-md-6 col-12">
+                    <label for="exampleFormControlSelectGlucose">GLUCOSE</label>
+                    <select class="form-control GLUCOSE" name="glucose" id="exampleFormControlSelectGlucose">
+                      <option value=0>Normal</option>
+                      <option value=1>Above Normal</option>
+                      <option value=2>Well Above Normal</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="row mb-2">
+                  <div class="col-lg-6 col-md-6 col-12 mb-2">
+                    <label for="exampleFormControlSelectAlcohol">ALCOHOL</label>
+                    <select class="form-control ALCOHOL" name="alcohol" id="exampleFormControlSelectAlcohol">
+                      <option value=1>Yes</option>
+                      <option value=0>NO</option>
+                      
+                    </select>
+                  </div>
+                </div>
+
+                <div class="d-grid"> 
+                  <button type="submit" class="btn btn-outline-info text-info buttonhover">Predict</button>
+                </div>
+              </form>
+          </div>
+          <h2 class="text-info mb-3 mt-3 mx-2 text-center">{{ value.msg }} </h2>
+        </div>
+{% comment %} msg starts here {% endcomment %}
+
+       
+    
+    {% comment %} <img src='./media/image.jpeg' height="50%" wifth="40%"> {% endcomment %}
+     {% comment %} <br>
+     <br> {% endcomment %}
+{% if value %}
+    {% if value.msg == 'Its Normal' %}
+      <div class="row mt-5 mb-4">
+            <!-- <div class="col"> -->
+              <div class="card shadow round d-flex justify-content-center">
+                <div class="card-body">
+                  <h5 class="card-title text-info text-center">Precautions measures</h5>
+                  
+                  <p class="card-text"><b>-></b>&nbsp Consume the right kind of carbohydrates.</p>
+                  <p class="card-text"><b>-></b>&nbsp Have more and more protein in your meals. (chicken and turkey, redmeat, fish such as salmon and tuna, dairy such as milk and yogurt, egg)</p>
+                  <p class="card-text"><b>-></b>&nbsp Eat more and more fruits and vegetables. (Fruits and vegetables are rich sources of natural fiber, vitamins, minerals, and other compounds that your body needs to function properly.)</p>
+                  <p class="card-text"><b>-></b>&nbsp Choose healthy fats. Unsaturated fats may help reduce inflammation and provide calories. (Healthy options include: nuts, seeds, avocados, olives, oils such as olive oil)</p>
+
+                  <p class="card-text"><b>-></b>&nbsp Do the Exercise regularly ( yoga, walking, arm stretch, jogging and more)</p>
+
+                  
+                </div>
+              </div>
+            <!-- </div> -->
+      </div>
+      {% else %}
+
+      <div class="row mt-5">
+            <div class="col-sm-6">
+              <div class="card shadow round">
+                <div class="card-body">
+                  <h5 class="card-title">Information</h5>
+                  <p class="card-text">{{ value.info }}</p>
+                  
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="card shadow round">
+                <div class="card-body ">
+                  <h5 class="card-title">Natiral Remidies</h5>
+                  <p class="card-text">{{ value.natural}}</p>
+                  
+                </div>
+              </div>
+           </div>
+      </div>
+
+       <div class="row mt-5 mb-5">
+            <div class="col-sm-6">
+              <div class="card shadow round">
+                <div class="card-body">
+                  <h5 class="card-title">Exercise</h5>
+                  <p class="card-text">{{ value.exercise}}</p>
+                  
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="card shadow round">
+                <div class="card-body">
+                  <h5 class="card-title">Diet</h5>
+                  <p class="card-text">{{ value.diet }}</p>
+                  
+                </div>
+              </div>
+           </div>
+      
+      </div>
+      {% if value.query %}
+      <h2 class="text-center text-info fsw-bold mt-5"> Recomended Doctors.</h2>
+      <div class="row mt-3 mb-5 ">
+      {% for doctor_data in value.query %}
+        <div class="col-lg-4 col-md-4 col-12">
+            <div class="card shadow round">
+                <div class="card-body">
+                  <h4 class="card-title">Clinic Name : {{doctor_data.clinic_name}}</h4>
+                  <h5 class="card-text">Doctor name :{{doctor_data.firstName}} {{doctor_data.lastName}}</h5>
+                  <p class="card-text">Phone : {{doctor_data.phone}}</p>
+                  <p class="card-text">Address : {{doctor_data.address}}</p>
+                  <p class="card-text">Email Id : {{doctor_data.username.email}}</p>
+
+
+                  
+                </div>
+            </div>        
+
+        </div> 
+      {% endfor %}
+    
+      </div>
+      {% endif %}
+
+      {% endif %}
+    
+{% endif %}
+  
+  </div>
+
+
+      </div>
+    
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+</body>
+</html>

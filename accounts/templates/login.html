@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/login_css.css' %}">
+</head>
+<body>
+
+<section class="container-fluid ">
+		{% if messages %}
+			<div class="alert alert-alert-info alert-dismissible fade show" role="alert">
+			{% for msg in messages  %}
+			{{msg}}
+			{% endfor %}
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		{% endif %}
+	<section class="row justify-content-center">
+
+		<section class="col-12 col-sm-6 col-md-3">
+			<section class="form-container">
+			<form method="POST">
+			{% csrf_token %}
+				  <div class="form-group">
+				  	<h4 class="text-center mb-2" style="color:#5d15c2"> Login here </h4>
+				    <label for="exampleInputEmail1">User name</label><br>
+				    {{login_form.username}}
+				    {% comment %} <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> {% endcomment %}
+				  </div>
+
+				  <div class="form-group">
+				    <label for="exampleInputPassword1">Password</label><br>
+				    {{login_form.password}}
+				  </div>
+
+				  {% comment %} <div class="form-check">
+				    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+				    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+				  </div> {% endcomment %}
+
+				  <button type="submit" class="btn btn-block mt-3 text-white" style="background-color:#5d15c2">Login</button>
+			</form>
+			<p class="text-center mt-3">Don't have an account? <a href="{% url 'register' %}">Create an account</a>.</p>
+			<a href="{% url 'reset_password' %}">Forgot your password?</a>.</p>
+			</section>
+
+		</section>
+
+
+	</section>
+	
+
+</section>
+
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

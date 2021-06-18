@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+ <title>Covid </title>
+{% endblock title %}
+{% block content %}
+
+<div class="container">
+  <div class="row justify-content-right">
+  <h2 class="text-info text-center fw-bold mt-3"> PREDICT COVID</h2>
+  <font align="right">
+  <a href="{% url 'home'%}"><button type="button" class="btn btn-outline-primary mb-2 shadow">Home</button></a>
+  </font>
+  </div>
+</div>
+<div class="container">      
+  
+    <div class="d-flex justify-content-center align-items-center mt-5">
+
+          <form method="POST" action="{% url 'predict_covid' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+             <div class="d-flex justify-content-center align-items-center">
+                
+                  <div class="upload-btn-wrapper ">
+                  
+                        <button class="btn upload-file font-weight-500">
+                            <span class="upload-btn">
+                              <i class="fas fa-cloud-upload-alt d-block font-50 pb-2"></i>
+                              <strong>UPLOAD IMAGE </strong>
+                            </span>
+                            
+                            <span class="success">
+                              <i class="far fa-check-circle text-success"></i>
+                            </span>
+                        </button>
+                        <input type="file" accept="image/*" name="selectfile" id="selectfile" required>
+                        <br>
+                        <br>
+                  </div>
+
+              </div>
+          <br>
+          <div class="d-flex justify-content-center align-items-center mt-4">
+              <button type="submit" class="btn btn-outline-info text-info hover mx-2 " style="width: 150px;">Predict</button>
+          </div>
+
+        </form>
+        </div>
+    
+      
+    
+    {% comment %} <img src='./media/image.jpeg' height="50%" wifth="40%"> {% endcomment %}
+     {% comment %} <br>
+     <br> {% endcomment %}
+ {% if value %}
+    
+    <h2 class="text-info mt-3 mx-2 text-center">{{ value }} </h2>
+      <center>
+      <h5 class="text-success mt-3"> Image Preview </h5>
+      <img class="mt-3 " src={{result}} height="15%" width="20%" align="center" alt="Card image cap1">
+      </center>
+
+            {% if infected %}
+                <div class="row mt-5">
+                    <div class="col-sm-6">
+                      <div class="card  mb-5 shadow rounded">
+                        <div class="card-body">
+                          <h5 class="card-title">Information</h5>
+                          <p class="card-text">{{ information }}.</p>
+                          
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="card  mb-5 shadow rounded">
+                        <div class="card-body">
+                          <h5 class="card-title">Precautions</h5>
+                          <p class="card-text">{{ precaution }}</p>
+                          
+                        </div>
+                      </div>
+                  </div>
+              </div>
+            {%else%}
+              
+              
+
+      <div class="row mt-5 ">
+            <div class="col-sm-6 justify-content-center">
+              <div class="card  mb-5 shadow rounded ">
+                <div class="card-body">
+                  <h5 class="card-title text-info text-center">Precautions measures for Covid 19</h5>
+                  <p class="card-text"><b>-></b>&nbsp{{pre0}}</p>
+                  <p class="card-text"><b>-></b>&nbsp{{pre1}}</p>
+                  <p class="card-text"><b>-></b>&nbsp{{pre2}}</p>
+                  <p class="card-text"><b>-></b>&nbsp{{pre3}}</p>
+                  <p class="card-text"><b>-></b>&nbsp{{pre4}}</p>
+                  <p class="card-text"><b>-></b>&nbsp{{pre5}}</p>
+                  <p class="card-text"><b>-></b>&nbsp{{pre6}}</p>
+      
+                </div>
+              </div>
+            </div>
+           
+      </div>
+      {% endif %}
+
+      {% if query %}
+                      <h2 class="text-center text-info fsw-bold mt-5"> Recomended Doctors.</h2>
+                      <div class="row mt-5 mb-5 ">
+                      {% for doctor_data in query %}
+                        <div class="col-lg-4 col-md-4 col-12">
+                            <div class="card shadow round">
+                            <img class="card-img-top" src="{{ doctor_data.image}}" alt="Card image cap">
+                                <div class="card-body">
+                                  <h4 class="card-title">Clinic Name : {{doctor_data.clinic_name}}</h4>
+                                  <h5 class="card-text">Doctor name :{{doctor_data.firstName}} {{doctor_data.lastName}}</h5>
+                                  <p class="card-text">Phone : {{doctor_data.phone}}</p>
+                                  <p class="card-text">Address : {{doctor_data.address}}</p>
+                                  <p class="card-text">Email Id : {{doctor_data.username.email}}</p>
+
+
+                                  
+                                </div>
+                            </div>        
+
+                        </div> 
+                      {% endfor %}
+                    
+                      </div>
+              {% endif %}
+
+   
+   
+  {% endif %}
+ 
+  
+  </div>
+{% endblock content %}

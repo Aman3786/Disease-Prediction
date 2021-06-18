@@ -1,0 +1,145 @@
+{% load static %}
+<html>
+    <head>
+        <title> Profile</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'css/global.css' %}" >
+        <style type="text/css">
+            .profile-header {
+                        transform: translateY(5rem);
+                             }
+            body {
+                    
+                    
+                    min-height: 100vh;
+                        }          
+        h1 {
+            color:green;
+        }
+        .xyz {
+            background-size: auto;
+            text-align: center;
+            padding-top: 100px;
+        }
+        .btn-circle.btn-sm {
+            width: 30px;
+            height: 30px;
+            padding: 6px 0px;
+            border-radius: 15px;
+            font-size: 8px;
+            text-align: center;
+        }
+        .btn-circle.btn-md {
+            width: 50px;
+            height: 50px;
+            padding: 7px 10px;
+            border-radius: 25px;
+            font-size: 10px;
+            text-align: center;
+        }
+        .btn-circle.btn-xl {
+            width: 70px;
+            height: 70px;
+            padding: 10px 16px;
+            border-radius: 35px;
+            font-size: 12px;
+            text-align: center;
+        }
+        .text-largest {
+                    font-size: 150%;
+                    }
+            
+         </style>
+    </head>
+
+<body>
+<!-- For demo purpose -->
+{% comment %} <div class="row">
+    <div class="col-lg-7 mx-auto text-white text-center pt-5">
+        <h1 class="display-4">Bootstrap 4 profile page</h1>
+        <p class="lead mb-0">Easily create a profile widget using bootstrap 4.</p>
+        <p class="lead">Snippet by <a href="https://bootstrapious.com/snippets" class="text-white">
+            <u>Bootstrapious</u></a>
+        </p>
+    </div>
+</div><!-- End --> {% endcomment %}
+<div  class="mt-3 mr-3" align="right">
+  <a href="{% url 'home'%}"><button type="button" class="btn btn-outline-primary mb-3 shadow ">Home</button></a>
+</div>
+
+<div class="row py-4 px-0">
+    <div class="col-xl-5 col-md-6 col-sm-10 mx-auto">
+
+        <!-- Profile widget -->
+        <div class="bg-white shadow rounded overflow-hidden">
+            <div class="px-4 pt-0 pb-4 bg-dark">
+                <div class="media align-items-end profile-header">
+                    {% comment %} <div class="profile mr-3"><img src="{{ dic.image}}" alt="..." width="130" class="rounded mb-2 img-thumbnail"><a href="#" class="btn btn-dark btn-sm btn-block">Edit profile</a></div>  {% endcomment %}
+                    <div class="media-body mb-5 text-white">
+                        <h4 class="mt-0 mb-0">{{user.username}}</h4>
+                        <p class="small mb-4"> <i class="fa fa-map-marker mr-2"></i>{{user.email}}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-light p-4 d-flex justify-content-end text-center">
+                <ul class="list-inline mb-0">
+                    <li class="list-inline-item">
+                        <a href="{% url 'doctor_page' %}" class="text-white "><button type="button" class="btn btn-success btn-circle btn-xl"> <h2> + </h2></button></a>
+                    </li>
+                    {% comment %} <li class="list-inline-item">
+                        <h5 class="font-weight-bold mb-0 d-block">84K</h5><small class="text-muted"> <i class="fa fa-user-circle-o mr-1"></i>Followers</small>
+                    </li> {% endcomment %}
+                </ul>
+            </div>
+           
+            {% if dic %}
+            <div class="container">
+            <div class="card mt-5 border-5 pt-2 active pb-0 px-3">
+                <h4>Public profiles</h4>
+                {% for value in dic %}
+                        
+                            <div class="card-body shadow mb-2">
+                                <div class="row">
+                                    <div class="col-12 ">
+                                    <div class="profile mr-3"><img src="{{ value.image}}" alt="..." width="130" class="rounded mb-2 img-thumbnail"></div>
+                                        <h4 class="card-title "><b>{{value.specialization}}</b></h4>
+                                        <p><b>clinic name- </b> {{value.clinic_name}} </p>
+                                        <p><b>clinic add- </b>{{value.address}}
+                                    </div>
+                                    {% comment %} <div class="col">
+                                        <h6 class="card-subtitle mb-2 text-muted">
+                                            <p class="card-text text-muted small "> <img src="https://img.icons8.com/metro/26/000000/star.png" class="mr-1 " width="19" height="19" id="star"> <span class="vl mr-2 ml-0"></span> Created by <span class="font-weight-bold"> BBBootstrap Team</span> on 1 Nov , 2018</p>
+                                        </h6>
+                                    </div> {% endcomment %}
+                                </div>
+                                
+                            </div>
+                
+                {% endfor %}
+            
+                {% comment %} <div class="card-footer bg-white px-0 ">
+                    <div class="row">
+                        <div class=" col-md-auto "> <a href="#" class="btn btn-outlined btn-black text-muted bg-transparent" data-wow-delay="0.7s"><img src="https://img.icons8.com/ios/50/000000/settings.png" width="19" height="19"> <small>SETTINGS</small></a> <i class="mdi mdi-settings-outline"></i> <a href="#" class=" btn-outlined btn-black text-muted"><img src="https://img.icons8.com/metro/26/000000/link.png" width="17" height="17" id="plus"> <small>PROGRAM LINK</small> </a> <a href="#" class="btn btn-outlined btn-black text-muted "><img src="https://img.icons8.com/metro/26/000000/more.png" width="20" height="20" class="mr-2 more"><small>MORE</small></a> <span class="vl ml-3"></span> </div>
+                         <div class="col-md-auto ">
+                            <ul class="list-inline">
+                                <li class="list-inline-item"> <img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1573035860/Pra/Hadie-profile-pic-circle-1.png" alt="DP" class=" rounded-circle img-fluid " width="35" height="35"> </li>
+                                <li class="list-inline-item"> <img src="https://img.icons8.com/ios/50/000000/plus.png" width="30" height="30 " class="more"> </li>
+                            </ul>
+                        </div> 
+                    </div>
+                </div> {% endcomment %}
+            </div>
+            
+        </div>
+            {% endif %}
+        </div><!-- End profile widget -->
+
+    </div>
+</div>
+
+
+</body>
+
+
+</html>

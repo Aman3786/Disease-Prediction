@@ -1,0 +1,191 @@
+.leftside, .rightside{
+   height: 100%;
+}
+
+
+@media screen and  (min-width:360px)
+{
+  .leftside, .rightside{
+    /* height:100vh; */
+    
+ 
+ }
+
+
+.leftside{
+  background:#f2f1f5;
+
+}          
+.rightside {
+  background:#ffffff;
+}
+
+.carousel-inner h5{
+  color:black;
+  background: rgb(255, 255, 255) ;
+  border-radius: .55rem;
+  text-align: center;
+  
+}
+}
+.carousel-image {
+  
+    height: 300px ;
+    width: 500px; 
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: .55rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  
+
+}
+
+.card  {
+
+    height: 10rem ;
+    width: 10rem;
+     
+    border-left-width: 10px;
+    margin: 0 auto; 
+    float: none; 
+    margin-top: 55px;
+    margin-bottom: 30px; 
+    color: black;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+
+
+.card-div  h5{
+    font-size:large ;
+    color: rgb(0, 0, 0);
+    padding-top :5px;
+    font-weight: bolder;
+    
+}
+
+
+/*---------------------------------------------------------------test------------------------------------------------------------------------ */
+
+.side1, .side2 ,.output{
+    height: 100%;
+ }
+
+ @media screen and  (min-width:360px)
+{
+  .side1,.side2,.output{
+    /* height:100vh; */
+    
+ 
+ }
+
+
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+body{
+    background-color:#f3f2f2;
+    font-family: 'Poppins', sans-serif;
+} 
+
+.help-to-upload{
+  
+    border:2px dashed rgb(31, 37, 33);
+    height:max-content;
+    margin-top:1rem ;
+    width: 100%;
+    
+}
+.help-to-upload p{
+      text-align: center;
+    }
+
+/*--------------------------------------------------------test --output------------------------------------------------------------------------ */
+
+ .output{
+   margin-left:2rem ;
+   margin-right:2rem;
+   border:2px dashed rgb(17, 109, 47);
+   
+ }
+
+/*--------------------------------------------------------test --image upload------------------------------------------------------------------------ */
+
+ .upload-btn-wrapper{
+     position: relative;
+     overflow: hidden;
+     display: inline-block;
+     cursor: pointer;
+     border:2px dashed rgb(39, 145, 65);
+     height:max-content;
+     margin-top: 1rem;
+ }
+ .upload-file{
+     border:2px dashed #eee;
+     color:#9b9b9b;
+     background-color: white;
+     width:400px;
+     height:250px;
+     border-radius: 8px;
+     font-size:15px;
+     cursor: pointer;
+ }
+ .upload-btn-wrapper input[type=file]{
+     width:100%;
+     position: absolute;
+     left:0;
+     right:0;
+     top:0;
+     opacity: 0;
+     cursor: pointer;
+     min-height: 300px;
+ }
+ .success{
+     display:none;
+ }
+ .success i{
+     font-size:22px;
+     margin-left:6px;
+     margin-top:10px;
+     color:#00b665;
+ }
+ .font-50{
+     font-size:50px;
+ }
+ .d-block{
+     display: block;
+ }
+ .btn .upload-file{
+     font-size:13px;
+ }
+ .upload-btn{
+     display: block;
+     font-size:18px;
+     color:#00b665;
+ }
+
+ 
+/*---------------------------------------------------------------pop up------------------------------------------------------------------------ */
+.pin{
+    color: #fff;
+    background-color: #f8f9fa00;
+    border-color: #f8f9fa00;
+    margin-top: 2rem;
+    margin-left: 2rem;
+    margin-bottom: 3rem;
+}
+
+.modal-body
+{
+    background-color: #00b665;
+    height:100% ;
+    width: 100%;
+}
+.modal-header
+{
+
+    background-color: #a39fdf;
+}

@@ -1,0 +1,124 @@
+
+{% load static %}
+<html>
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="{% static '/css/styles.css'%}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+
+<!-- 
+.my_card  {
+
+    height: 10rem ;
+    width: 10rem;
+     
+    border-left-width: 10px;
+    margin: 0 auto; 
+    float: none; 
+    margin-top: 55px;
+    margin-bottom: 30px; 
+    color: black;
+}
+
+
+
+
+.my_card-div  h5{
+    font-size:large ;
+    color: rgb(0, 0, 0);
+    padding-top :5px;
+    font-weight: bolder;
+    
+} -->
+
+<div class="row  no-gutters">
+        <div class="col-md-6 col-sm-12 no-gutters ">
+
+
+            <button type="button" class= "pin" data-toggle="modal" data-target="#exampleModalCenter" >
+					<i class="material-icons" > assignment_late</i>
+				  </button>
+				  <!-- Modal -->
+				  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+					<div class="modal-dialog modal-dialog-centered" role="document">
+					  <div class="modal-content">
+						<div class="modal-header">
+						  <h5 class="modal-title" id="exampleModalLongTitle">.about us</h5>
+						  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							   <span aria-hidden="true">&times;</span>
+						  </button>
+						</div>
+						<div class="modal-body">
+						  ...
+						</div>
+
+					  </div>
+					</div>
+				  </div>
+
+
+            <div class="side1 ">
+              <div class="d-flex justify-content-center align-items-center">
+                
+                <div class="upload-btn-wrapper">
+                
+                  <button class="btn upload-file font-weight-500">
+                      <span class="upload-btn">
+                        <i class="fas fa-cloud-upload-alt d-block font-50 pb-2"></i>
+                        Browse folders here
+                      </span>
+                      <span class="upload-select-button" id="blankFile">
+                          Supports JPG, JPG2000 and PNG
+                      </span>
+                      <span class="success">
+                        <i class="far fa-check-circle text-success"></i>
+                      </span>
+                  </button>
+                  <input type="file" name="selectfile" id="selectfile">
+                  <br>
+                  <br>
+                  
+                  {% comment %} <div class="processing">
+                    <label for="file">processing</label>
+                    <progress id="file" value="32" max="100"> 32% </progress>
+                    32%
+                   </div> {% endcomment %}
+
+                </div>
+
+                
+
+              </div>
+            </div>
+        </div>  
+      
+          <div class="col-md-6 col-sm-12 no-gutters">
+            <div class="side2 d-flex">
+              <div class="col-md-12 col-sm-12 my-2 help-to-upload d-flex justify-content-center align-items-center">
+                <p>name of the diseses all </p>
+                  <br><br><br>
+                  <button type="button" class="btn btn-dark" >Dark</button>
+              </div>
+            </div>
+          </div>
+</div>
+<br>
+<br>
+<div class="output" >
+       <p> out put
+ </p>
+</div>
+
+ 
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

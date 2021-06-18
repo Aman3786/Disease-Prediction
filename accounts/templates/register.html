@@ -1,0 +1,142 @@
+{% comment %} {% extends "main/header.html" %} {% endcomment %}
+
+ 
+
+{% load crispy_forms_tags %}         
+
+<!--Register-->
+
+{% comment %} <div class="container py-5">
+		{% if messages %}
+            {% for message in messages %}
+				<div class="alert alert-info alert-dismissible fade show" role="alert">
+				{{message}}
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+            {% endfor %}
+        {% endif %}
+
+		
+	 <h1>Register</h1>
+	<form method="POST">
+		{% csrf_token %}
+		{{ register_form|crispy }}                    
+		<button class="btn btn-primary" type="submit">Register</button>
+	</form>
+	<p class="text-center">If you already have an account, <a href="/login">login</a> instead.</p> 
+</div> {% endcomment %}
+
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Signup</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/login_css.css' %}">
+
+	<script> 
+          
+            // Function to check Whether both passwords 
+            // is same or not. 
+            function checkPassword(form) { 
+                password1 = form.exampleInputPassword1.value; 
+                password2 = form.exampleInputPassword2.value; 
+  
+                // If password not entered 
+                if (password1 == '') 
+                    alert ("Please enter Password"); 
+                      
+                // If confirm password not entered 
+                else if (password2 == '') 
+                    alert ("Please enter confirm password"); 
+                      
+                // If Not same return False.     
+                else if (password1 != password2) { 
+                    alert ("\nPassword did not match: Please try again...") 
+                    return false; 
+                } 
+  
+                // If same return True. 
+                else{ 
+                    alert("Password Match: Welcome to Sweethome!") 
+                    return true; 
+                } 
+            } 
+        </script> 
+
+</head>
+<body>
+
+<section class="container-fluid my-3">
+	{% if messages %}
+            {% for message in messages %}
+				<div class="alert alert-info alert-dismissible fade show" role="alert">
+				{{message}}
+				<ul type="disc" >
+				<li>Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only </li>
+				<li>Your password can’t be too similar to your other personal information.</li>
+				<li>Your password must contain at least 8 characters.</li>
+				<li>Your password can’t be a commonly used password.</li>
+				<li>Your password can’t be entirely numeric.</li>
+				</ul>
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+            {% endfor %}
+        {% endif %}
+	<section class="row justify-content-center ">
+
+		<section class="col-12 col-sm-6 col-md-3 mb-5">
+			<div class="form-container" >
+			<form  method="POST" onSubmit = "return checkPassword(this)">
+			{% csrf_token %}
+			     <h4 class="text-center mb-2" style="color:#5d15c2"> Register here </h4>
+					<div class="form-group">
+						<label for="exampleInputname">Username</label><br>
+						{{register_form.username}}
+					</div>
+
+				  <div class="form-group">
+				  	
+				    <label for="exampleInputEmail1">Email address</label><br>
+				    {{ register_form.email }}
+				    {% comment %} <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> {% endcomment %}
+				  </div>
+
+				  <div class="form-group">
+				    <label for="exampleInputPassword1">Password</label><br>
+				    {{register_form.password1}}
+				  </div>
+
+				  <div class="form-group">
+				    <label for="exampleInputPassword2">Re-Type Password</label><br>
+				    {{register_form.password2}}
+				  </div>
+
+				  <button type="submit" class="btn btn-block text-white" style="background-color:#5d15c2;">Signup</button>
+			</form>
+			<p class="text-center mt-3">You have an account? <a href="{% url 'login' %}">Login here</a>.</p>
+			
+			
+			</div>
+		</section>
+		
+
+
+	</section>
+	
+
+</section>
+
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
+

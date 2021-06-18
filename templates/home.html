@@ -1,0 +1,227 @@
+{% load static %}
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>HOME PAGE</title>
+	<link href="{% static '/css/styles.css' %}" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<script src="{% static 'main.js' %}"></script>
+</head>
+		<style>
+		.custom_navbar{
+			background-color : #dc2430 ;
+		}
+
+		</style>
+
+<body>
+
+<nav class="navbar navbar-expand-lg  navbar-dark custom_navbar shadow-g ">
+  <a class="navbar-brand" href="#"><h5>Disease</h5></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse " id="navbarNavDropdown">
+   {% if user.is_authenticated %}
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#"></a>
+      </li>
+      <li class="nav-item dropdown  ">
+        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{user.username}}
+        </a>
+        <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
+          
+          <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+          <a class="dropdown-item" href="{% url 'logout' %}">logout</a>
+        </div>
+      </li>
+	  <li> &nbsp&nbsp &nbsp &nbsp
+	  </li>
+    </ul>
+	{% else %}
+	<ul class="navbar-nav ml-auto">
+      <li class="nav-item dropdown  ">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Are you a doctor ?
+        </a>
+        <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="{% url 'register' %}">Register</a>
+          <a class="dropdown-item" href="{% url 'login' %}">Login</a>
+          
+        </div>
+      </li>
+
+	  </ul>
+
+	{% endif %}
+  </div>
+</nav>
+
+
+
+<div class="row  no-gutters">
+	<div class="col-md-6 col-sm-12 no-gutters ">
+			<div class="leftside ">
+
+			    <button type="button" class= "pin " data-toggle="modal" data-target="#exampleModalCenter" >
+					<i class="material-icons text-info fs-3" ><big>info</big></i> 
+				  </button>
+				  <!-- Modal -->
+				  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+					<div class="modal-dialog modal-dialog-centered" role="document">
+					  <div class="modal-content">
+						<div class="modal-header text-center bg-white">
+						  <h5 class="modal-title " id="exampleModalLongTitle">About project</h5>
+						  
+						  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						  </button>
+						</div>
+						<div class="modal-body bg-white">
+						 <p> We have  build a system in which our system will predict diseases by X-rays and MRI or Symptoms of the user.
+Users may or can be suffering from diseases like pneumonia , Covid , Brain tumor and breast cancer . So simply a user has to upload X-rays and MRI Image even put the symptoms according to which he or she is suffering from after uploading, our system will predict on the basis of deep learning algorithms , whether that person is suffering from any particular disease for which he or she has uploaded the image or symptoms.
+</p>                       <p>After getting the result if person is suffering from any disease then we will provide an information related to that disease and  if possible we will provide natural remedies and first Aid , If that person is not suffering from any diseases then we’ll  provide the information to stay fit so that person should have less chance to suffering from that  disease in future.
+</p>
+						</div>
+
+					  </div>
+					</div>
+				  </div>
+			
+				  <div class="carousel  d-flex justify-content-center align-items-center">
+				<div id="carousel" class="carousel carousel-fade" data-ride="carousel">
+					<div class="carousel-inner">
+						<div class="carousel-item active">
+							
+							<img class="carousel-image img-fluid" src="{% static 'cartoon1.jpg' %}" alt="First slide">
+							<br><br>
+							{% comment %} <h5> Once you can control your mind, you can control your body</h5> {% endcomment %}
+						</div>
+						<div class="carousel-item">
+							<img class="carousel-image img-fluid" src="{% static 'cartoon2.jpg' %}" alt="Second slide">
+							<br><br>
+							{% comment %} <h5>The only bad workout is no workout.</h5> {% endcomment %}
+						</div>
+						<div class="carousel-item">
+							<img class="carousel-image img-fluid" src="{% static 'cartoon3.jpg' %}" alt="Third slide">
+							<br><br>
+							{% comment %} <h5>We’re always in the mood for food</h5> {% endcomment %}
+						
+						</div>
+						 <div class="carousel-item">
+							<img class="carousel-image img-fluid" src="{% static 'cartoon4.jpg' %}" alt="Third slide">
+							<br><br>
+							{% comment %} <h5>Better to wear a mask than a ventilator <br> better to stay at home than in an ICU.</h5> {% endcomment %}
+						
+						</div>
+
+						 <div class="carousel-item">
+							<img class="carousel-image img-fluid" src="{% static 'cartoon5.jpg' %}" alt="Third slide">
+							<br><br>
+							{% comment %} <h5>Use your hands to make some bubbles to kill those troubles</h5> {% endcomment %}
+						
+						</div> 
+
+
+						{% comment %} <div class="carousel-item">
+							<img class="carousel-image img-fluid" src="{% static 'food1.jpg' %}" alt="Third slide">
+							<br><br>
+							<h5> Eat healthy, live better</h5>
+						
+						</div> {% endcomment %}
+
+						{% comment %} <div class="carousel-item">
+							<img class="carousel-image img-fluid" src="{% static 'yog.jpg' %}" alt="Third slide">
+							<br><br>
+							<h5>Bring the healthiest change in your life by yoga</h5>
+						
+						</div> {% endcomment %}
+
+					</div>
+				</div>
+			</div>
+			</div>
+			</div>
+
+		<div class="col-md-6 col-sm-12 no-gutters">
+			<div class="rightside d-flex">
+			
+				<div class="container">	
+                  	<div class="row justify-content-center">
+						<div class="col-md-6 col-sm-12 my-2 card-div">
+							<div class="card shadow-lg rounded">
+								<a href="{% url 'pneumonia' %}">
+								<img class="card-img-top " src="{% static 'lung.jpg' %}" height="100px" width="100px" alt="">
+								<div class="card-body">
+									<h5 class="card-title">Pneumonia</h5>
+								</div>
+							</a>
+						</div>
+					   </div>
+						<div class="col-md-6 col-sm-12 my-2 card-div">
+							<div class="card shadow round">
+							<a href="{% url 'breast_cancer' %}">								
+								<img class="card-img-top" src="{% static 'bc.jpg' %}" height="100px" width="100px" alt="">
+								<div class="card-body">
+									<h5 class="card-title">Breast Cancer</h5>
+								</div>
+							</a>
+						</div>
+						</div>
+						<div class="col-md-6 col-sm-12 my-2 card-div">
+							<div class="card shadow round">
+								<a href="{% url 'covid' %}">	
+								<img class="card-img-top" src="{% static 'virus.jpg' %}" height="100px" width="100px" alt="">
+								<div class="card-body">
+									<h5 class="card-title">&nbsp&nbsp Covid-19</h5>
+								</div>					
+							</a>
+						</div>
+						</div>
+						<div class="col-md-6  col-sm-12 my-2 card-div">
+							
+							<div class="card shadow-lg">
+								<a href="{% url 'brain' %}">	
+								<img class="card-img-top" src="{% static 'brain.jpg' %}" height="100px" width="100px" alt="">
+								<div class="card-body">
+									<h5 class="card-title">Brain Tumor</h5>
+								</div>
+							</a>
+						</div>
+						</div>
+						{% comment %} <div class="col-md-6 col-sm-12 my-2 card-div">						
+							<div class="card ">
+								<a href="{% url 'heart' %}">	
+								 <img class="card-img-top" src="{% static 'heart.jpg' %}" height="100px" width="100px" >
+								 <div class="card-body">
+									<h5 class="card-title">Heart Disease</h5>
+								</div>						 
+							</a>
+						</div>
+						</div> {% endcomment %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+	</script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+	</script>
+
+
+</body>
+
+</html>
